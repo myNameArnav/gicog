@@ -1,9 +1,9 @@
 from app import getDaysToCommit
 from datetime import timedelta, date
+import json
 
 if __name__ == "__main__":
     todayDate = date.today()
     daysToCommitList = getDaysToCommit(todayDate)
-    for day in daysToCommitList:
-        if day[0] == todayDate.strftime("%Y-%m-%d"):
-            print("yes")
+    with open("datesToCommit.json", "w") as f:
+        f.write(json.dumps({"dates": daysToCommitList}))
