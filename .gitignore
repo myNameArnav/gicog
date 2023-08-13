@@ -1,3 +1,5 @@
 .vscode
 __pycache__
 test*.py
+commit.txt
+*.json
