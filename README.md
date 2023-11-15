@@ -34,5 +34,5 @@ After you will run the scipt, a `datesToCommit.json` will be created, it would l
 
 These are all the dates when you have to commit, where the value is `1`. You are free to choose how you commit. 
 
-There is a script `commitOrNot.sh` that I run in a cron job everyday, on [this github account](https://github.com/patete)
+There is a script `commitOrNot.sh` that I (plan to) run in a cron job everyday, on [this github account](https://github.com/patete)
 
