@@ -6,4 +6,4 @@ if __name__ == "__main__":
     todayDate = date.today()
     daysToCommitList = getDaysToCommit(todayDate)
     with open("datesToCommit.json", "w") as f:
-        f.write(json.dumps({"dates": daysToCommitList}))
+        f.write(json.dumps(daysToCommitList))
