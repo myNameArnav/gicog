@@ -14,6 +14,8 @@ It is very cool but also very time intensive.
 
 I did some calculations, just for a `Hello World` it will take a year.
 
+*If you want to add more letters/symbols, see [me](https://github.com/myNameArnav/gicog/blob/main/alphabetMatrix/README.md)*
+
 ## Installation
 
 1. Clone repo
@@ -35,4 +37,3 @@ After you will run the scipt, a `datesToCommit.json` will be created, it would l
 These are all the dates when you have to commit, where the value is `1`. You are free to choose how you commit. 
 
 There is a script `commitOrNot.sh` that I (plan to) run in a cron job everyday, on [this github account](https://github.com/patete)
-
