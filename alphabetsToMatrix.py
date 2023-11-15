@@ -14,6 +14,7 @@ Functions:
 
 import pyperclip
 
+
 def parseInput(inputStr):
     """
     Parse tab-spaced input values into a 2D array.
@@ -24,15 +25,16 @@ def parseInput(inputStr):
     Returns:
     list: A 2D array containing the parsed values.
     """
-    rows = inputStr.strip().split('\n')
+    rows = inputStr.strip().split("\n")
     array2D = []
-    
+
     for row in rows:
-        values = row.split('\t')
+        values = row.split("\t")
         intValues = [int(val) for val in values]
         array2D.append(intValues)
-    
+
     return array2D
+
 
 def transposeMatrix(matrix):
     """
@@ -49,6 +51,7 @@ def transposeMatrix(matrix):
     transposed = [[matrix[j][i] for j in range(numRows)] for i in range(numCols)]
     return transposed
 
+
 while True:
     print("Enter tab-spaced values (press Enter twice to finish):")
     inputStr = ""
@@ -57,11 +60,11 @@ while True:
         if not line:
             break
         inputStr += line + "\n"
-    
+
     if not inputStr.strip():
         print("Exiting the program.")
         break
-    
+
     array2D = parseInput(inputStr)
     transposedArray = transposeMatrix(array2D)
 
