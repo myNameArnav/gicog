@@ -23,7 +23,7 @@ if [[ -f "datesToCommit.json" ]]; then
         echo "$randomString" > $gicogDir/commit.txt
     else
         # If commit is not 1, clear commit.txt
-        "" > $gicogDir/commit.txt
+        > $gicogDir/commit.txt
     fi
 else
     echo "Error: Did not find $todayDate in datesToCommit.json"
