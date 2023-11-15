@@ -13,6 +13,7 @@ If you want to add more letters or symbols, follow the steps
 > ![image](https://github.com/myNameArnav/gicog/assets/35961071/f1e8a28b-a868-4dc0-b85f-e08ef0b7efe7)
 
 4. Run `alphabetsToMatrix.py`, and paste it into the input, it will look like this
+
 ```
 0	0	1	0	0
 0	1	1	1	0
@@ -22,6 +23,7 @@ If you want to add more letters or symbols, follow the steps
 1	0	0	0	1
 1	0	0	0	1
 ```
+
 5. The script will automatically paste the result your clipboard
 
 6. Just add another entry in `alphabetMatrix.json`
