@@ -1,6 +1,7 @@
 from datetime import timedelta, date
-from alphabetMatrix import getAlphabetMatrix
+from os import getenv
 
+from alphabetMatrix import getAlphabetMatrix
 
 def getDaysToCommit(todayDate: str) -> dict:
     matrix = getAlphabetMatrix()
@@ -8,7 +9,7 @@ def getDaysToCommit(todayDate: str) -> dict:
     commitGrid = []
     noOfWeeks = 0
     addDays = 0
-    sentence = "Hello World"
+    sentence = getenv("SENTENCE")
 
     # if week day is anything else than sunday then go to next sunday
     delta = 6 - todayDate.weekday()
