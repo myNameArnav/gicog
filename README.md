@@ -14,14 +14,20 @@ It is very cool but also very time intensive.
 
 I did some calculations, just for a `Hello World` it will take a year.
 
-*If you want to add more letters/symbols, see [me](https://github.com/myNameArnav/gicog/blob/main/alphabetMatrix/README.md)*
+> [!NOTE]
+> The script currently only supports letters A to Z
+> 
+> *If you want to add more letters/symbols, see [me](https://github.com/myNameArnav/gicog/blob/main/alphabetMatrix/README.md)*
+
 
 ## Installation
 
 1. Clone repo
 2. (optional, but recommended) Make a virtual environment
 3. Install all the required packages using `pip install -r requirements.txt`
-4. Run file `python main.py`
+4. Rename `.env.template` to `.env`
+5. In `.env` replace the value of `SENTENCE` with whatever you want to show on the contribution graph
+6. Run file `python main.py`
 
 ## Installation after dark
 
