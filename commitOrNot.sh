@@ -4,39 +4,39 @@ set -e
 
 # Check if datesToCommit.json exists
 if [ ! -f datesToCommit.json ]; then
-    echo "Error: datesToCommit.json not found. Run main.py to generate it."
-    exit 1
+  echo "Error: datesToCommit.json not found."
+  exit 1
 fi
 
-todayDate=$(date +"%Y-%m-%d")
+# Iterate through each date in the JSON
+jq -c 'to_entries | .[]' datesToCommit.json | while read -r entry; do
+  date=$(echo "$entry" | jq -r '.key')
+  commitValue=$(echo "$entry" | jq -r '.value')
 
-# Check if the file exists
-if [[ -f "datesToCommit.json" ]]; then
-    # Extract the value for today's date from datesToCommit.json
-    datesToCommit=$(jq -r ".\"$todayDate\"" datesToCommit.json)
+  echo "Processing date: $date with value: $commitValue"
 
-    echo "Script ran at $todayDate, and isCommit is $datesToCommit" >> log.txt
+  # Check if the commit value is 1
+  if [[ "$commitValue" -eq 1 ]]; then
+    # Save a random string to commit.txt
+    randomString=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 32)
+    echo "$randomString" > commit.txt
 
-    # Check if commit = 1
-    if [[ $datesToCommit -eq 1 ]]; then
-        # Save a random string to commit.txt
-        randomString=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 32)
-        echo "$randomString" > commit.txt
-    else
-        # If commit is not 1, clear commit.txt
-        > commit.txt
+    # Check if commit.txt has contents
+    str=$(cat commit.txt)
+    strLen=${#str}
+
+    if [ "$strLen" -gt 0 ]; then
+      # Add, commit, and push changes with the specific date
+      git add .
+      GIT_AUTHOR_DATE="$date 00:00:00" GIT_COMMITTER_DATE="$date 00:00:00" git commit -m "$date"
+      echo "Committed changes for date: $date"
     fi
-else
-    echo "Error: Did not find $todayDate in datesToCommit.json"
-    exit 1
-fi
+  else
+    echo "Skipping commit for date: $date (value is not 1)"
+  fi
+done
 
-# Check if commit.txt has contents
-str=$(cat commit.txt)
-strLen=${#str}
+# Push all commits at the end
+git push -u origin main
 
-if [ $strLen -gt 0 ]; then
-    # Add, commit, and push changes
-    git commit -am "$(date '+%Y-%m-%d')"
-    git push -u origin main
-fi
+echo "Script finished."
